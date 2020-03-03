@@ -21,6 +21,6 @@ Un notebook qui contient les codes du projet.
 Il y a des scripts utilisés dans le projet.
 
 * DataLoader.py: une classe pour charger, upsample/downsample les données et normaliser les donnée.
-* train.py: entrainer le model
-* predict.py: faire la prediction
-* tool.py: contenir les outils pour le projet
+* train_model.py: entrainer le model
+* predict_model.py: faire la prediction
+* tools.py: contenir les outils pour le projet
