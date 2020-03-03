@@ -6,6 +6,8 @@ from imblearn.over_sampling import SMOTE
 from sklearn.model_selection import RandomizedSearchCV
 from sklearn.metrics import classification_report
 
+import seaborn as sns
+
 def delete_outliers(Xtrain, ytrain, variable):
     '''
     find IQR, and delete outliers
@@ -58,3 +60,19 @@ def CV_SMOTE(original_Xtrain, original_ytrain, model, params, n_iter, K):
 
         print(search.best_params_)
         print(classification_report(original_ytrain.values[CV_test], prediction))
+    
+def save_corr(df):
+    ax = sns.heatmap(df.corr(), vmin = -1, vmax = 1, cmap='coolwarm')
+    ax.figure.savefig('../data/output/corr.jpg')
+
+def plot_9_violinplot(df):
+    v_nums = [i for i in range(1, 29)]
+    v_choosed = random.choices(v_nums, k=9)
+    idx = 0
+
+    fig,ax =  plt.subplots(3,3, figsize=(10,10))
+    for i in range(3):
+        for j in range(3):
+            sns.violinplot(df["V"+str(v_choosed[idx])], ax = ax[i][j])
+            idx += 1
+    fig.savefig('../data/output/9_violinplot.jpg')
